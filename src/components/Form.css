@@ -1,0 +1,15 @@
+.add-task-form {
+    position: absolute;
+    top: 60px;
+    margin-left: 10px;
+}
+
+@media (max-width: 425px) {
+    .add-task-form {
+        position: absolute;
+        top: 60px;
+        margin-left: 0;
+        left: 5px;
+        right: 5px;
+    }
+}

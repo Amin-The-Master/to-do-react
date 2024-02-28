@@ -1,0 +1,47 @@
+.empty {
+    background: #D9D9D9;
+}
+
+.low {
+    background: #2D41A7;  
+}
+
+/* MDIUM LEVEL */
+.medium {
+    background-color: #ECB800;
+}
+
+/* High LEVEL */
+.high {
+    background: #E42C5F;
+}
+
+.task {
+    background: #F4F2FF;
+}
+
+.task .date{
+    color: #F4F2FF;
+}
+
+.task .priority .priority-level{
+    padding-right: 24px;
+    padding-left: 12px;
+}
+
+.task .desc {
+    color: #2B1887;
+}
+
+.task .close-task:hover {
+    background: none;
+}
+
+@media (max-width: 640px) {
+    .task-desc{
+        text-align: center;
+    }
+    .task .desc {
+        margin-top: 30px;
+    }
+}

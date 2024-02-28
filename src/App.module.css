@@ -1,0 +1,12 @@
+body {
+  background: #2B1887;
+}
+
+
+.list .task {
+  background: #F4F2FF;
+}
+
+.list .task .date{
+  color: #F4F2FF;
+}
