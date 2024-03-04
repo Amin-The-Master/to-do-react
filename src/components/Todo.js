@@ -4,8 +4,7 @@ import './ToDo.module.css';
 const Todo = (props) => {
     let ToDo = JSON.parse(localStorage.getItem('toDo'));
     let done = JSON.parse(localStorage.getItem('done'));
-    console.log(ToDo)
-   
+    
     const makeDoneHandler = (e) => {
         if(e.target.closest('.edit-task')) return;
         const data = e.target.closest('.task');

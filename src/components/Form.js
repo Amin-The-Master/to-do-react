@@ -1,5 +1,3 @@
-import { useRef } from 'react';
-
 import './Form.css'
 import closeIcon from '../icons/close.svg'
 

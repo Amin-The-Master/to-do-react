@@ -1,6 +1,6 @@
-import classes from './Done.module.css';
 import Task from './Task';
 import doneIcon from '../icons/done.svg'
+import './Done.css'
 const Done = () => {
     let done = JSON.parse(localStorage.getItem('done'));
 

@@ -5,7 +5,7 @@ import Done from './components/Done';
 import Todo from './components/Todo';
 
 function App() {
-  if(localStorage.length === 0) {
+  if(!localStorage.key('toDo')) {
     localStorage.setItem('toDo',JSON.stringify([]));
     localStorage.setItem('done',JSON.stringify([]));
   }
