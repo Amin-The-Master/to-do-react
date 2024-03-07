@@ -16,7 +16,8 @@ function App() {
   const Level = useRef();
   const Date = useRef();
 
-  const taskHandler = () => {
+  const taskHandler = (e) => {
+    e.preventDefault();
       const task = {
           taskName: taskName.current.value,
           taskCorP: taskCorP.current.value,
@@ -28,6 +29,7 @@ function App() {
       const toDoTasks = JSON.parse(localStorage.getItem('toDo'));
       toDoTasks.push(task)
       localStorage.setItem('toDo', JSON.stringify(toDoTasks));
+      setShowForm(false)
   }
 
   const [showForm , setShowForm] = useState(false);
