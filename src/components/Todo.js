@@ -1,10 +1,22 @@
 import listIcon from '../icons/list.svg'
 import Task from './Task';
 import './ToDo.module.css';
+import { useState,useEffect } from 'react';
 const Todo = (props) => {
     let ToDo = JSON.parse(localStorage.getItem('toDo'));
     let done = JSON.parse(localStorage.getItem('done'));
     
+    const [renderTasks,setRenderTasks] = useState('');
+    useEffect(() => {
+        setRenderTasks(
+            ToDo.map(task => <Task 
+                onClick={makeDoneHandler} 
+                key={task.taskName} 
+                taskItems={task}/>)
+        );
+        
+    },[ToDo]);
+
     const makeDoneHandler = (e) => {
         if(e.target.closest('.edit-task')) return;
         const data = e.target.closest('.task');
@@ -16,13 +28,9 @@ const Todo = (props) => {
         localStorage.setItem('done',JSON.stringify(done));
         ToDo.splice(data3,1);
         localStorage.setItem('toDo',JSON.stringify(ToDo));
-        // console.log(data2)
-        console.log(ToDo)
-        window.location.reload();
-    }
-
+      }
     return (
-        <div className="bg-[#D5CCFF] sm:flex-1 lg:w-fit mb-3 h-fit 
+        <div id='todo' className="bg-[#D5CCFF] sm:flex-1 lg:w-fit mb-3 h-fit 
         md:p-6 p-3 rounded-2xl">
             <div className="sm:flex">
                 <div className="flex p-3">
@@ -50,7 +58,7 @@ const Todo = (props) => {
                 </div>
             </div>
 
-            {ToDo.map(task => <Task showForm={props.showTheForm} key={task.taskName} onClick={makeDoneHandler} taskItems={task}/>)}
+            {renderTasks}
         </div>
     )
 }

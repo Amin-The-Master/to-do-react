@@ -9,7 +9,6 @@ const Task = (taskItems) => {
     const [showForm , setShowForm] = useState(false);
 
     const closeFormHandler = (e) => {
-        e.preventDefault();
         setShowForm(false)
     }
 
@@ -60,7 +59,6 @@ const Task = (taskItems) => {
         }
         ToDo.push(editedTask);
         localStorage.setItem('toDo',JSON.stringify(ToDo)); 
-        window.location.reload()
     }
 
     return (
