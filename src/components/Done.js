@@ -6,12 +6,16 @@ const Done = (props) => {
     const [renderDoneTasks,setRenderDoneTasks] = useState('');
     let done = JSON.parse(localStorage.getItem('done'));
     useEffect(() => {
-       setRenderDoneTasks(
-            done.map(task => <Task 
-                onClick={deleteHandler} 
-                key={task.taskName} 
-                taskItems={task}/>)
-        );
+       if(done) {
+        setTimeout(()=> {
+            setRenderDoneTasks(
+                done.map(task => <Task 
+                    onClick={deleteHandler} 
+                    key={task.taskName} 
+                    taskItems={task}/>)
+            );
+       });
+       }
         
     },[done]);
 

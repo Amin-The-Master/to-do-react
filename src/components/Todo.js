@@ -5,15 +5,19 @@ import { useState,useEffect } from 'react';
 const Todo = (props) => {
     let ToDo = JSON.parse(localStorage.getItem('toDo'));
     let done = JSON.parse(localStorage.getItem('done'));
-    
     const [renderTasks,setRenderTasks] = useState('');
+    
     useEffect(() => {
-        setRenderTasks(
-            ToDo.map(task => <Task 
-                onClick={makeDoneHandler} 
-                key={task.taskName} 
-                taskItems={task}/>)
-        );
+        if(ToDo) {
+            setTimeout(() => {
+                setRenderTasks(
+                    ToDo.map(task => <Task 
+                        onClick={makeDoneHandler} 
+                        key={task.taskName} 
+                        taskItems={task}/>)
+                )
+            });
+        }
         
     },[ToDo]);
 
