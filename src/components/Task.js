@@ -5,8 +5,10 @@ import EditBtn from './EditBtn';
 import Form from './Form';
 
 let ToDo = JSON.parse(localStorage.getItem('toDo'));
+
 const Task = (taskItems) => {
     const [showForm , setShowForm] = useState(false);
+    const [editBtn , setEditBtn] = useState();
 
     const closeFormHandler = (e) => {
         setShowForm(false)
@@ -36,19 +38,16 @@ const Task = (taskItems) => {
         <span className={`priority-level ${taskItems.taskItems.taskPriority} rounded-bl-3xl rounded-r ml-3 `}></span>
     </>;
 
-    let editBtn;
-
     const editHandler = function (e) {
+        e.preventDefault();
         setShowForm(true);
         const findEditBtn = e.target.closest('.edit-task');
-        editBtn = findEditBtn.id;
+        setEditBtn(findEditBtn.id);
     }
     
     const submitEdit = (e) => {
         e.preventDefault();
-        let data = ToDo.find(task => task.taskName === editBtn);
-        console.log(data)
-        ToDo.splice(data,1)
+        const data = ToDo.find(task => task.taskName === editBtn);
         const editedTask = {
             taskName: taskName.current.value,
             taskCorP: taskCorP.current.value,
@@ -57,13 +56,24 @@ const Task = (taskItems) => {
             taskDay: Date.current.value,
             taskType: 'to-do',
         }
-        ToDo.push(editedTask);
-        localStorage.setItem('toDo',JSON.stringify(ToDo)); 
+        if(editedTask.taskName === '') {
+            alert('Task Name must be set');
+            return;
+        }
+
+        if(ToDo.find(tasks => tasks.taskName === editedTask.taskName)) {
+            alert('The Task Is Already there');
+            return;
+        } else {
+            ToDo.splice(data,1)
+            ToDo.push(editedTask);
+            localStorage.setItem('toDo',JSON.stringify(ToDo)); 
+        } 
     }
 
     return (
         <>
-            {showForm && <Form onSubmit={submitEdit} closeForm={closeFormHandler}
+            {showForm && <Form formType={'Edit Task'} onSubmit={submitEdit} closeForm={closeFormHandler}
             taskName={taskName} taskCorP={taskCorP} 
             Priority={Priority} Level={Level} 
             Date={Date}/>}

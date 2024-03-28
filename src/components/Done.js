@@ -20,7 +20,6 @@ const Done = (props) => {
     },[done]);
 
     const deleteHandler = (e) => {
-        console.log(e)
         const data = e.target.closest('.task');
         if(!data) return;
         const data3 = done.findIndex(task => task.taskName === data.id);

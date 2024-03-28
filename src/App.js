@@ -10,6 +10,8 @@ function App() {
     localStorage.setItem('done',JSON.stringify([]));
   }
 
+  let ToDo = JSON.parse(localStorage.getItem('toDo'));
+
 ////// Hooks /////////
   const [showForm , setShowForm] = useState(false);
   const taskName = useRef();
@@ -23,7 +25,6 @@ function App() {
 ////// Handlers /////////
   const taskHandler = (e) => {
     e.preventDefault();
-    
     const task = {
       taskName: taskName.current.value,
       taskCorP: taskCorP.current.value,
@@ -33,10 +34,15 @@ function App() {
       taskType: 'to-do',
     };
 
-    const toDoTasks = JSON.parse(localStorage.getItem('toDo'));
-    toDoTasks.push(task);
-    localStorage.setItem('toDo',JSON.stringify(toDoTasks));
-    setShowForm(false)
+    if(ToDo.find(tasks => tasks.taskName === task.taskName)) {
+      alert('The Task Is Already there');
+      return;
+    } else {
+      const toDoTasks = JSON.parse(localStorage.getItem('toDo'));
+      toDoTasks.push(task);
+      localStorage.setItem('toDo',JSON.stringify(toDoTasks));
+      setShowForm(false)
+    } 
   }
 
   const closeFormHandler = (e) => {
@@ -54,7 +60,7 @@ function App() {
   
   return(
     <div className="to-do relative list lg:flex my-4 mx-auto mx-1 w-full lg:p-12 md:p-6">
-      {showForm && <Form onSubmit={taskHandler} closeForm={closeFormHandler}
+      {showForm && <Form formType={'Add Task'} onSubmit={taskHandler} closeForm={closeFormHandler}
       taskName={taskName} taskCorP={taskCorP} 
       Priority={Priority} Level={Level} 
       Date={Date}/>}

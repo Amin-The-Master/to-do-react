@@ -5,24 +5,27 @@ const Form = (props) => {
     return (
         <>
             <form onSubmit={props.onSubmit} className="add-task-form rounded bg-[#2C2C2C] text-[#F4F2FF] lg:p-10 md:p-6 p-3">
-                <button onClick={props.closeForm} className="close flex ml-auto w-10 text-white">
-                    <img className="text-white" src={closeIcon} alt="close" />
-                </button>
-                <div className="flex mt-3">
+                <div className='flex'>
+                    <p className="
+                    mr-auto 
+                    font-sans
+                    font-bold 
+                    text-2xl 
+                    text-[#fff]">{props.formType}</p>
+                    <button onClick={props.closeForm} className="close flex ml-auto w-10 text-white">
+                        <img className="text-white" src={closeIcon} alt="close" />
+                    </button>
+                </div>
+                <div className="flex mt-6">
                     <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl">Task:</h2>
                     <input ref={props.taskName} id="taskName" 
                     className="font-sans lg:text-2xl ml-auto p-2 text-[#2B1887]" type="text" />
                 </div>
-
-                <span className="err-task hidden block text-center mt-2 font-sans text-[#ef0c0c] sm:text-xl text-md text">Enter Task Name!</span>
                 <div className="flex mt-6">
                     <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl md:mr-3">Client or Project:</h2>
                     <input ref={props.taskCorP} id="taskCorP" 
                     className="font-sans ml-auto p-2 text-[#2B1887]" type="text" />
                 </div>
-
-                <span className="err-cp hidden block text-center mt-2 font-sans text-[#ef0c0c] sm:text-xl text-md text">Enter The Client or Project</span>
-                
                 <div className="flex mt-6">
                     <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl">Priority:</h2>
                     <select ref={props.Priority} className="priority ml-auto p-3 bg-[#2B1887]">
