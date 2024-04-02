@@ -3,8 +3,8 @@ import doneIcon from '../icons/done.svg'
 import './Done.css'
 import { useState,useEffect } from 'react';
 const Done = (props) => {
-    const [renderDoneTasks,setRenderDoneTasks] = useState('');
     let done = JSON.parse(localStorage.getItem('done'));
+    const [renderDoneTasks,setRenderDoneTasks] = useState('');
     useEffect(() => {
        if(done) {
         setTimeout(()=> {
@@ -28,9 +28,9 @@ const Done = (props) => {
       }
 
     return (
-        <div id='doneList' className="doneList bg-[#D5CCFF] sm:flex-1 lg:w-fit mb-3 h-fit lg:ml-3
-        p-6 rounded-2xl">
-            <div className="flex">
+        <div id='doneList' className="doneList bg-[#D5CCFF] sm:flex-1 m-3 h-fit 
+        md:p-6 p-3 rounded-2xl">
+            <div className="flex p-3">
                 <div>
                     <img className="w-fit" src={doneIcon} alt="done-icon" />
                 </div>
