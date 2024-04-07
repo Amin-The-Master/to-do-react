@@ -3,7 +3,7 @@ const EditBtn = (props) => {
     return (
         <button id={props.id} onClick={props.onClick} className={`
                 edit-task 
-                ${props.taskItems.taskType === 'done' ? 'hidden' : ''}
+                ${props.taskType === 'done' ? 'hidden' : ''}
                 duration-200 
                 font-sans
                 font-bold 

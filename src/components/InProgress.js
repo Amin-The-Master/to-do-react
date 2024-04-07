@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
-import Task from "./Task";
+import Task from "./Task/Task";
 
 const InProgress = () => {
     let progressing = JSON.parse(localStorage.getItem('progressing'));
     const [rendering,setRendering] = useState('');
 
     useEffect(() => {
-        setTimeout(() => {
-            setRendering(
-                progressing.map(task => <Task 
-                    key={task.taskName} 
-                    taskItems={task}/>)
-            );
-        });
+        if(progressing) {
+            setTimeout(() => {
+                setRendering(
+                    progressing.map(task => <Task 
+                        key={task.taskName} 
+                        taskItems={task}/>)
+                );
+            });
+        }
     },[progressing]);
 
     return (

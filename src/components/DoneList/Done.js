@@ -1,5 +1,5 @@
-import Task from './Task';
-import doneIcon from '../icons/done.svg'
+import Task from '../Task/Task';
+import doneIcon from '../../icons/done.svg'
 import './Done.css'
 import { useState,useEffect } from 'react';
 const Done = (props) => {
@@ -10,9 +10,11 @@ const Done = (props) => {
         setTimeout(()=> {
             setRenderDoneTasks(
                 done.map(task => <Task 
-                    onClick={deleteHandler} 
-                    key={task.taskName} 
-                    taskItems={task}/>)
+                    onClick={deleteHandler}
+                    key={task.taskName} taskName={task.taskName} 
+                    taskPriority={task.taskPriority} taskDay={task.taskDay} 
+                    taskLevel={task.taskLevel} taskCorp={task.taskCorp}
+                    taskType={task.taskType}/>)
             );
        });
        }
