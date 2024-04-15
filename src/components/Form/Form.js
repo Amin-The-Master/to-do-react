@@ -1,57 +1,48 @@
-import { useRef } from 'react';
-import './Form.css';
-import FormLayout from './FormLayout';
+import closeIcon from '../../assests/close.svg';
+import SubmitBtn from '../Btns/SubmitBtn';
+import Days from './Days';
+import Levels from './Levels';
+import PrioritySlide from './Priority';
+import Input from './Input';
 
 const Form = (props) => {
-    if(localStorage.length === 0 && !localStorage.key('toDo')) {
-        localStorage.setItem('toDo',JSON.stringify([]));
-        localStorage.setItem('progressing',JSON.stringify([]));
-        localStorage.setItem('done',JSON.stringify([]));
-    }
-    const taskName = useRef();
-    const taskCorP = useRef();
-    const Priority = useRef();
-    const Level = useRef();
-    const Date = useRef();
-    
-    const formSubmit = (e) => {
-        const toDoTasks = JSON.parse(localStorage.getItem('toDo'));
-        e.preventDefault();
-        const task = {
-        taskName: taskName.current.value,
-        taskCorP: taskCorP.current.value,
-        taskPriority: Priority.current.value,
-        taskLevel: Level.current.value,
-        taskDay: Date.current.value,
-        taskType: 'to-do',
-        };
-
-        const pushFunc = (task) => {
-            toDoTasks.push(task);
-            localStorage.setItem('toDo',JSON.stringify(toDoTasks));
-            props.closeForm();
-        }
-        
-        if(toDoTasks.find(tasks => tasks.taskName === task.taskName)) {
-            alert('The Task Is Already there');
-            return;
-        } else if(props.formType === 'Edit-Task') {
-            const data = toDoTasks.find(task => task.taskName === props.editBtn);
-            toDoTasks.splice(data,1);
-            if(props.closeForm()) {
-                pushFunc(data);
-                return;
-            }
-        }  
-
-        pushFunc(task);
-    }
-
     return (
-        <FormLayout onSubmit={formSubmit} formType={props.formType}
-        closeForm={props.closeForm} taskName={taskName} taskCorP={taskCorP}
-        Priority={Priority} Level={Level} Date={Date}/>
+        <form onSubmit={props.onSubmit} className="add-task-form rounded bg-[#2C2C2C] text-[#F4F2FF] lg:p-10 md:p-6 p-3">
+            <div className='flex'>
+                <p className="
+                mr-auto 
+                font-sans
+                font-bold 
+                text-2xl 
+                text-[#fff]">{props.formType}</p>
+                <button onClick={props.closeForm} className="close flex ml-auto w-10 text-white">
+                    <img className="text-white" src={closeIcon} alt="close" />
+                </button>
+            </div>
+            <div className="flex mt-6">
+                <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl">Task:</h2>
+                <Input ref={props.taskName} id={'taskName'}/>
+            </div>
+            <div className="flex mt-6">
+                <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl md:mr-3">Client or Project:</h2>
+                <Input ref={props.taskCorP} id={'taskCorP'}/>
+            </div>
+            <div className="flex mt-6">
+                <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl">Priority:</h2>
+                <PrioritySlide ref={props.taskPriority}/>
+            </div>
+            <div className="flex mt-6">
+                <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl">Level:</h2>
+                <Levels ref={props.taskLevel} />
+            </div>
+            <div className="flex mt-3">
+                <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl">Day:</h2>
+                <Days ref={props.taskDate}/>
+            </div>
+
+            <SubmitBtn />
+        </form>
     )
-};
+}
 
 export default Form;

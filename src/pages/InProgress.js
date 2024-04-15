@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import Task from "./Task/Task";
+import Task from "../components/Task/Task";
+import useCheckLocalStorage from "../hooks/useCheckLocalStorage";
 
 const InProgress = () => {
+    useCheckLocalStorage();
     let progressing = JSON.parse(localStorage.getItem('progressing'));
     const [rendering,setRendering] = useState('');
 

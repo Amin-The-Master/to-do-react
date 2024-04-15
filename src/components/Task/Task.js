@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Task.css'
-import Form from '../Form/Form';
+import Form from '../Form/FormSubmit';
 import TaskLayout from './TaskLayout';
 
 const Task = (props) => {

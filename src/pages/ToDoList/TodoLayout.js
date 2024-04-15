@@ -1,5 +1,5 @@
-import listIcon from '../../icons/list.svg'
-import AddTaskBtn from './AddTaskBtn';
+import listIcon from '../../assests/list.svg'
+import AddTaskBtn from '../../components/Btns/AddTaskBtn';
 
 const TodoLayout = (props) => {
 return  <div id='todo' className="bg-[#D5CCFF] sm:flex-1 m-3 h-fit 

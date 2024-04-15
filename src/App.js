@@ -1,10 +1,10 @@
 import './App.module.css'
-import Done from './components/DoneList/Done';
-import Todo from './components/ToDoList/Todo';
+import Done from './pages/DoneList/Done';
+import Todo from './pages/ToDoList/Todo';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import InProgress from './components/InProgress';
-import Rooter from './Rooter';
-import MainPage from './components/MainPage/MainPage';
+import InProgress from './pages/InProgress';
+import Rooter from './pages/Rooter';
+import MainPage from './pages/MainPage';
 
 const router = createBrowserRouter([
   {
@@ -33,12 +33,6 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  if(localStorage.length === 0 && !localStorage.key('toDo')) {
-    localStorage.setItem('toDo',JSON.stringify([]));
-    localStorage.setItem('progressing',JSON.stringify([]));
-    localStorage.setItem('done',JSON.stringify([]));
-  }
- 
   return <RouterProvider router={router} />
 }
 

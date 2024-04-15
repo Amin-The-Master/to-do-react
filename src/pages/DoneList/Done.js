@@ -1,8 +1,10 @@
-import Task from '../Task/Task';
-import doneIcon from '../../icons/done.svg'
+import Task from '../../components/Task/Task';
+import doneIcon from '../../assests/done.svg'
 import './Done.css'
 import { useState,useEffect } from 'react';
+import useCheckLocalStorage from '../../hooks/useCheckLocalStorage';
 const Done = (props) => {
+    useCheckLocalStorage();
     let done = JSON.parse(localStorage.getItem('done'));
     const [renderDoneTasks,setRenderDoneTasks] = useState('');
     useEffect(() => {

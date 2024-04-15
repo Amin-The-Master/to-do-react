@@ -1,5 +1,5 @@
 import './Task.css'
-import EditBtn from './EditBtn';
+import EditBtn from '../Btns/EditBtn';
 import TaskLevel from './TaskLevel';
 
 const TaskLayout = (props) => {
