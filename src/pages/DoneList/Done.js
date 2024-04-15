@@ -7,29 +7,30 @@ const Done = (props) => {
     useCheckLocalStorage();
     let done = JSON.parse(localStorage.getItem('done'));
     const [renderDoneTasks,setRenderDoneTasks] = useState('');
+
     useEffect(() => {
        if(done) {
         setTimeout(()=> {
+            const deleteHandler = (e) => {
+                const data = e.target.closest('.task');
+                if(!data) return;
+                const data3 = done.findIndex(task => task.taskName === data.id);
+                done.splice(data3,1);
+                localStorage.setItem('done',JSON.stringify(done));
+            }
             setRenderDoneTasks(
                 done.map(task => <Task 
                     onClick={deleteHandler}
-                    key={task.taskName} taskName={task.taskName} 
+                    key={task.taskname + task.taskCorP + task.taskPriority
+                    + task.taskLevel + task.taskDay} taskName={task.taskName} 
                     taskPriority={task.taskPriority} taskDay={task.taskDay} 
                     taskLevel={task.taskLevel} taskCorp={task.taskCorp}
                     taskType={task.taskType}/>)
             );
-       });
+       },6);
        }
         
     },[done]);
-
-    const deleteHandler = (e) => {
-        const data = e.target.closest('.task');
-        if(!data) return;
-        const data3 = done.findIndex(task => task.taskName === data.id);
-        done.splice(data3,1);
-        localStorage.setItem('done',JSON.stringify(done));
-      }
 
     return (
         <div id='doneList' className="doneList bg-[#D5CCFF] sm:flex-1 m-3 h-fit 

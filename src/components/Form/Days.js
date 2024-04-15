@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 const Days = forwardRef((props,ref) => {
-    return <select ref={ref} className="day-task ml-auto ml-3 p-3 bg-[#2B1887]">
+    return <select id={props.id} ref={ref} className="day-task ml-auto ml-3 p-3 bg-[#2B1887]">
         <option value="None">None</option>
         <option value="Mon">Mon</option>
         <option value="Tue">Tue</option>

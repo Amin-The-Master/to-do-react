@@ -29,15 +29,15 @@ const Form = (props) => {
             </div>
             <div className="flex mt-6">
                 <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl">Priority:</h2>
-                <PrioritySlide ref={props.taskPriority}/>
+                <PrioritySlide ref={props.taskPriority} id={'taskPriority'}/>
             </div>
             <div className="flex mt-6">
                 <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl">Level:</h2>
-                <Levels ref={props.taskLevel} />
+                <Levels ref={props.taskLevel} id={'taskLevel'}/>
             </div>
             <div className="flex mt-3">
                 <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl">Day:</h2>
-                <Days ref={props.taskDate}/>
+                <Days ref={props.taskDate} id={'taskDate'}/>
             </div>
 
             <SubmitBtn />
