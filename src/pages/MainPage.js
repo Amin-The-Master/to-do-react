@@ -1,5 +1,5 @@
 import useCheckLocalStorage from '../hooks/useCheckLocalStorage';
-import Done from './DoneList/Done';
+import Done from './Done';
 import Todo from './ToDoList/Todo';
 
 const MainPage = () => {

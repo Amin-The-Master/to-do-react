@@ -1,8 +1,9 @@
 import listIcon from '../../assests/list.svg'
-import AddTaskBtn from '../../components/Btns/AddTaskBtn';
+import Button from '../../components/Button/Button';
 
 const TodoLayout = (props) => {
-return  <div id='todo' className="bg-[#D5CCFF] sm:flex-1 m-3 h-fit 
+    const btnClasses = "add-task duration-200 font-sans font-bold sm:text-3xl text-2xl rounded hover:rounded bg-white hover:bg-[#2B1887] p-3 hover:text-white text-[#2B1887]"
+    return  <div id='todo' className="bg-[#D5CCFF] sm:flex-1 m-3 h-fit 
         md:p-6 p-3 rounded-2xl">
             <div className="flex">
                 <div className="flex p-3">
@@ -13,7 +14,11 @@ return  <div id='todo' className="bg-[#D5CCFF] sm:flex-1 m-3 h-fit
                 </div>
                 
                 <div className="ml-auto">
-                    <AddTaskBtn onClick={props.showFormHandler}/>
+                    <Button 
+                    onClick={props.showFormHandler} 
+                    className={btnClasses}>
+                        Add Task
+                    </Button>
                 </div>
             </div>
 

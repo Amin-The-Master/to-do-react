@@ -1,8 +1,9 @@
 import './Task.css'
-import EditBtn from '../Btns/EditBtn';
 import TaskLevel from './TaskLevel';
+import Button from '../Button/Button';
 
-const TaskLayout = (props) => {
+const TaskCard = (props) => {
+    const btnClass = `edit-task ${props.taskType === 'done' ? 'hidden' : ''} duration-200 font-sans font-bold sm:text-3xl text-2xl rounded hover:rounded hover:text-white p-3 ml-auto`;    
     
     return (<div onClick={props.onClick} id={props.taskName} 
     className="task hover:cursor-pointer hover:shadow-2xl 
@@ -10,7 +11,12 @@ const TaskLayout = (props) => {
     my-3 p-3">
         <div className="flex">
             <h2 className="font-sans pl-3 font-bold text-2xl">{props.taskName}</h2>
-            <EditBtn id={props.taskName} onClick={props.editHandler} taskType={props.taskType}/> 
+            <Button 
+            id={props.taskName} 
+            onClick={props.editHandler} 
+            className={btnClass}>
+                Edit
+            </Button>
         </div>
         <div className="task-desc m-3 pt-4 sm:flex">
             <div className={`priority ${props.taskPriority}-priority`}>
@@ -32,4 +38,4 @@ const TaskLayout = (props) => {
     )
 };
 
-export default TaskLayout;
+export default TaskCard;

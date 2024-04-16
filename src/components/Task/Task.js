@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Task.css'
 import Form from '../Form/FormSubmit';
-import TaskLayout from './TaskLayout';
+import TaskCard from './TaskCard';
 
 const Task = (props) => {
     const [showForm , setShowForm] = useState(false);
@@ -22,7 +22,7 @@ const Task = (props) => {
         <>
             {showForm && <Form formType={'Edit-Task'} editBtn={editBtn} 
             closeForm={closeFormHandler}/>}
-            <TaskLayout onClick={props.onClick} taskName={props.taskName} 
+            <TaskCard onClick={props.onClick} taskName={props.taskName} 
             editHandler={editHandler} taskPriority={props.taskPriority} 
             taskDay={props.taskDay} taskLevel={props.taskLevel} 
             taskCorP={props.taskCorP} taskType={props.taskType}/>

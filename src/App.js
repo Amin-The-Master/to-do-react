@@ -1,5 +1,5 @@
 import './App.module.css'
-import Done from './pages/DoneList/Done';
+import Done from './pages/Done';
 import Todo from './pages/ToDoList/Todo';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import InProgress from './pages/InProgress';

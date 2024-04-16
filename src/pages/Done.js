@@ -1,8 +1,7 @@
-import Task from '../../components/Task/Task';
-import doneIcon from '../../assests/done.svg'
-import './Done.css'
+import Task from '../components/Task/Task';
+import doneIcon from '../assests/done.svg'
 import { useState,useEffect } from 'react';
-import useCheckLocalStorage from '../../hooks/useCheckLocalStorage';
+import useCheckLocalStorage from '../hooks/useCheckLocalStorage';
 const Done = (props) => {
     useCheckLocalStorage();
     let done = JSON.parse(localStorage.getItem('done'));
@@ -24,7 +23,7 @@ const Done = (props) => {
                     key={task.taskname + task.taskCorP + task.taskPriority
                     + task.taskLevel + task.taskDay} taskName={task.taskName} 
                     taskPriority={task.taskPriority} taskDay={task.taskDay} 
-                    taskLevel={task.taskLevel} taskCorp={task.taskCorp}
+                    taskLevel={task.taskLevel} taskCorP={task.taskCorP}
                     taskType={task.taskType}/>)
             );
        },6);
