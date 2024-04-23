@@ -20,23 +20,23 @@ const Form = (props) => {
             </div>
             <div className="flex mt-6">
                 <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl">Task:</h2>
-                <Input type={'text'} ref={props.taskName} id={'taskName'}/>
+                <Input defaultValue={props.defaultTaskName} type={'text'} ref={props.taskName} id={'taskName'}/>
             </div>
             <div className="flex mt-6">
                 <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl md:mr-3">Client or Project:</h2>
-                <Input type={'text'} ref={props.taskCorP} id={'taskCorP'}/>
+                <Input defaultValue={props.defaultTaskCorP} type={'text'} ref={props.taskCorP} id={'taskCorP'}/>
             </div>
             <div className="flex mt-6">
                 <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl">Priority:</h2>
-                <Selcet ref={props.taskPriority} id={'taskPriority'} options={'Priority'}/>
+                <Selcet defaultValue={props.defaultTaskPriority} ref={props.taskPriority} id={'taskPriority'} options={'Priority'}/>
             </div>
             <div className="flex mt-6">
                 <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl">Level:</h2>
-                <Selcet ref={props.taskLevel} id={'taskLevel'} options={'Level'}/>
+                <Selcet defaultValue={props.defaultTaskLevel} ref={props.taskLevel} id={'taskLevel'} options={'Level'}/>
             </div>
             <div className="flex mt-3">
                 <h2 className="font-sans font-bold lg:text-3xl sm:text-2xl">Day:</h2>
-                <Selcet ref={props.taskDate} id={'taskDate'} options={'Days'}/>
+                <Selcet defaultValue={props.defaultTaskDate} ref={props.taskDate} id={'taskDate'} options={'Days'}/>
             </div>
             <Button type='submit' className={btnClass}>Submit</Button>
         </form>

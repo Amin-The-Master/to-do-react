@@ -15,7 +15,7 @@ const Todo = () => {
         setShowForm(true);
     }
 
-    const closeFormHandler = (e) => {
+    const closeFormHandler = () => {
         setShowForm(false);
     }
 
@@ -29,14 +29,17 @@ const Todo = () => {
                 const data = e.target.closest('.task');
                 if(!data) return;
                 if(data) {
-                    const data2 = ToDo.find(task => task.taskName === data.id);
+                    const data2 = ToDo.find(task => task.taskName + task.taskCorP + 
+                    task.taskPriority + task.taskLevel + task.taskDay === data.id);
+                    const data3 = ToDo.findIndex(task => task.taskName + task.taskCorP + 
+                    task.taskPriority + task.taskLevel + task.taskDay === data.id);
                     data2.taskType = 'done';
                     progressing.push(data2)
                     localStorage.setItem('progressing',JSON.stringify(progressing));
-                    ToDo.splice(data2,1);
+                    ToDo.splice(data3,1);
                     localStorage.setItem('toDo',JSON.stringify(ToDo));
                     setTimeout(() => {
-                        progressing.splice(data2,1);
+                        progressing.splice(data3,1);
                         localStorage.setItem('progressing',JSON.stringify(progressing));
                         done.push(data2);
                         localStorage.setItem('done',JSON.stringify(done));
@@ -46,7 +49,7 @@ const Todo = () => {
             setRenderTodoTasks(
                 ToDo.map(task => <Task 
                     onClick={makeDoneHandler}
-                    key={task.taskname + task.taskCorP + task.taskPriority
+                    key={task.taskName + task.taskCorP + task.taskPriority
                     + task.taskLevel + task.taskDay} taskName={task.taskName} 
                     taskPriority={task.taskPriority} taskDay={task.taskDay} 
                     taskLevel={task.taskLevel} taskCorP={task.taskCorP} 

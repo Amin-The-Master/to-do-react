@@ -2,7 +2,7 @@ import Task from '../components/Task/Task';
 import doneIcon from '../assests/done.svg'
 import { useState,useEffect } from 'react';
 import useCheckLocalStorage from '../hooks/useCheckLocalStorage';
-const Done = (props) => {
+const Done = () => {
     useCheckLocalStorage();
     let done = JSON.parse(localStorage.getItem('done'));
     const [renderDoneTasks,setRenderDoneTasks] = useState('');
@@ -20,7 +20,7 @@ const Done = (props) => {
             setRenderDoneTasks(
                 done.map(task => <Task 
                     onClick={deleteHandler}
-                    key={task.taskname + task.taskCorP + task.taskPriority
+                    key={task.taskName + task.taskCorP + task.taskPriority
                     + task.taskLevel + task.taskDay} taskName={task.taskName} 
                     taskPriority={task.taskPriority} taskDay={task.taskDay} 
                     taskLevel={task.taskLevel} taskCorP={task.taskCorP}

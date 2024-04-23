@@ -3,14 +3,16 @@ import './Form.css';
 import Form from './Form';
 
 const FormSubmit = (props) => {
+    const toDoTasks = JSON.parse(localStorage.getItem('toDo'));
     const name = useRef();
     const corp = useRef();
     const priority = useRef();
     const level = useRef();
     const date = useRef();
+    const defaultValues = toDoTasks.find(task => task.taskName + task.taskCorP + 
+    task.taskPriority + task.taskLevel + task.taskDay === props.editBtn);
     
     const formSubmit = (e) => {
-        const toDoTasks = JSON.parse(localStorage.getItem('toDo'));
         e.preventDefault();
         const task = {
             taskName: name.current.value,
@@ -39,11 +41,15 @@ const FormSubmit = (props) => {
             alert('The Task Is Already there');
             return;
         } else if(props.formType === 'Edit-Task') {
-            const data = toDoTasks.find(task => task.taskName === props.editBtn);
-            toDoTasks.splice(data,1);
+            const data = toDoTasks.find(task => task.taskName + task.taskCorP + 
+            task.taskPriority + task.taskLevel + task.taskDay === props.editBtn);
+            const data2 = toDoTasks.findIndex(task => task.taskName + task.taskCorP + 
+            task.taskPriority + task.taskLevel + task.taskDay === props.editBtn);
             if(props.closeForm()) {
                 pushFunc(data);
                 return;
+            } else {
+                toDoTasks.splice(data2,1);
             }
         }  
 
@@ -51,7 +57,12 @@ const FormSubmit = (props) => {
     }
 
     return (
-        <Form onSubmit={formSubmit} formType={props.formType}
+        <Form defaultTaskName={props.formType === 'Edit-Task' ? defaultValues.taskName : ''}
+        defaultTaskCorP={props.formType === 'Edit-Task' ? defaultValues.taskCorP : ''}
+        defaultTaskPriority={props.formType === 'Edit-Task' ? defaultValues.taskPriority : ''}
+        defaultTaskLevel={props.formType === 'Edit-Task' ? defaultValues.taskLevel : ''} 
+        defaultTaskDate={props.formType === 'Edit-Task' ? defaultValues.taskDay : ''} 
+        onSubmit={formSubmit} formType={props.formType}
         closeForm={props.closeForm} taskName={name} taskCorP={corp}
         taskPriority={priority} taskLevel={level} taskDate={date}/>
     )

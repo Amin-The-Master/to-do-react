@@ -12,7 +12,7 @@ const InProgress = () => {
             setTimeout(() => {
                 setRendering(
                     progressing.map(task => <Task 
-                        key={task.taskname + task.taskCorP + task.taskPriority
+                        key={task.taskName + task.taskCorP + task.taskPriority
                         + task.taskLevel + task.taskDay} 
                         taskItems={task}/>)
                 );

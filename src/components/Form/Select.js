@@ -16,7 +16,7 @@ const Selcet = forwardRef((props,ref) => {
         }
     }
     
-    return <select id={props.id} ref={ref} className="ml-auto p-3 bg-[#2B1887]">
+    return <select id={props.id} defaultValue={props.defaultValue} ref={ref} className="ml-auto p-3 bg-[#2B1887]">
     {optionFunc(props.options)}
     </select>
 })

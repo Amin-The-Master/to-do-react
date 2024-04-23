@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Task.css'
-import Form from '../Form/FormSubmit';
+import FormSubmit from '../Form/FormSubmit';
 import TaskCard from './TaskCard';
 
 const Task = (props) => {
@@ -20,7 +20,7 @@ const Task = (props) => {
 
     return (
         <>
-            {showForm && <Form formType={'Edit-Task'} editBtn={editBtn} 
+            {showForm && <FormSubmit formType={'Edit-Task'} editBtn={editBtn} 
             closeForm={closeFormHandler}/>}
             <TaskCard onClick={props.onClick} taskName={props.taskName} 
             editHandler={editHandler} taskPriority={props.taskPriority} 
